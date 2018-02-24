@@ -36,9 +36,6 @@ function Particle(x, y, w, h, dx, dy){
 		this.x += this.dx;
 		this.y += this.dy;
 
-
-
-
 		this.draw();
 	}
 }
@@ -57,12 +54,13 @@ function animate(){
 	c.clearRect(0, 0, innerWidth, innerHeight);
 	//c.clearRect(last.x, last.y, last.width, last.height)
 	
-	c.strokeStyle = "rgba(0, 0, 255, 0.05)";
+	c.strokeStyle = "rgba(0, 0, 255, 0.5)";
 	c.lineWidth = 0.05;
 		
 	for(var i = 0; i < particles.length; i++){
 			
-			c.beginPath();		
+			c.beginPath();	
+			c.moveTo(particles[i].x + size/2, particles[i].y + size/2);		
 			for(var j = i+1; j < particles.length - 1; j++){
 
 			
@@ -70,13 +68,11 @@ function animate(){
 				if(distance(particles[i].x, particles[j].x, particles[i].y, particles[j].y) < 150){
 				
 				
-				c.moveTo(particles[i].x + size/2, particles[i].y + size/2);	
-				
-				
 				c.lineTo(particles[j].x + size/2, particles[j].y + size/2);
-				
+				//c.closePath()
+				c.stroke();
 			}
-			c.stroke();		
+					
 		}
 		
 		particles[i].update();
