@@ -34,7 +34,7 @@ function distance(x1, x2, y1, y2){
 
 var size = 10;
 
-for(var i = 0; i < 100; i++){
+for(var i = 0; i < 150; i++){
 	particles[i] = new Particle(Math.random()*innerWidth, Math.random()*innerHeight, size, size);
 }
 function animate(){
